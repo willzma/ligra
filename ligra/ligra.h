@@ -474,12 +474,12 @@ int parallel_main(int argc, char* argv[]) {
   bool binary = P.getOptionValue("-b");
   bool mmap = P.getOptionValue("-m");
   //cout << "mmap = " << mmap << endl;
-  long rounds = P.getOptionLongValue("-rounds",3);
+  long rounds = P.getOptionLongValue("-rounds",1);
   if (compressed) {
     if (symmetric) {
       graph<compressedSymmetricVertex> G =
         readCompressedGraph<compressedSymmetricVertex>(iFile,symmetric,mmap); //symmetric graph
-      Compute(G,P);
+      //Compute(G,P);
       for(int r=0;r<rounds;r++) {
         startTime();
         Compute(G,P);
@@ -489,7 +489,7 @@ int parallel_main(int argc, char* argv[]) {
     } else {
       graph<compressedAsymmetricVertex> G =
         readCompressedGraph<compressedAsymmetricVertex>(iFile,symmetric,mmap); //asymmetric graph
-      Compute(G,P);
+      //Compute(G,P);
       if(G.transposed) G.transpose();
       for(int r=0;r<rounds;r++) {
         startTime();
@@ -503,7 +503,7 @@ int parallel_main(int argc, char* argv[]) {
     if (symmetric) {
       graph<symmetricVertex> G =
         readGraph<symmetricVertex>(iFile,compressed,symmetric,binary,mmap); //symmetric graph
-      Compute(G,P);
+      //Compute(G,P);
       for(int r=0;r<rounds;r++) {
         startTime();
         Compute(G,P);
@@ -513,7 +513,7 @@ int parallel_main(int argc, char* argv[]) {
     } else {
       graph<asymmetricVertex> G =
         readGraph<asymmetricVertex>(iFile,compressed,symmetric,binary,mmap); //asymmetric graph
-      Compute(G,P);
+      //Compute(G,P);
       if(G.transposed) G.transpose();
       for(int r=0;r<rounds;r++) {
         startTime();

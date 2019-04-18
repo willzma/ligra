@@ -116,12 +116,16 @@ typedef unsigned int uintT;
 typedef long intE;
 typedef unsigned long uintE;
 #define INT_E_MAX LONG_MAX
+#define INT_E_MIN LONG_MIN
 #define UINT_E_MAX ULONG_MAX
+#define UINT_E_MIN ULONG_MIN
 #else
 typedef int intE;
 typedef unsigned int uintE;
 #define INT_E_MAX INT_MAX
+#define INT_E_MIN INT_MIN
 #define UINT_E_MAX UINT_MAX
+#define UINT_E_MIN UINT_MIN
 #endif
 
 #endif // _PARALLEL_H
