@@ -18,10 +18,6 @@ struct BFS_F {
       }
     }
 
-    /*if (currentFlow == INT_E_MIN) {
-      std::cerr << "Expected value not found in CSR matrix!\n";
-    }*/
-
     if (currentFlow < edgeLen && Parents[d] == UINT_E_MAX) { 
       Parents[d] = s; 
       return 1; 
@@ -37,10 +33,6 @@ struct BFS_F {
         break;
       }
     }
-    
-    /*if (currentFlow == INT_E_MIN) {
-      std::cerr << "Expected value not found in CSR matrix!\n";
-    }*/
     
     if (currentFlow < edgeLen) {
       return (CAS(&Parents[d],UINT_E_MAX,s));
@@ -101,14 +93,6 @@ void Compute(graph<vertex>& GA, commandLine P) {
       break;
     }
 
-    /*uintE cur = destination;
-    while (cur != start) {
-      std::cout << cur << " ";
-      cur = Parents[cur];
-    }
-    std::cout << cur;
-    std::cout << "\n";*/
-
     // Else update flow adjacency matrix
     // First determine the flow delta
     uintE current = destination;
@@ -123,10 +107,6 @@ void Compute(graph<vertex>& GA, commandLine P) {
           break;
         }
       }
-      
-      /*if (capacity == UINT_E_MAX) {
-        std::cerr << "Expected neighbor not found in LIGRA graph!\n";
-      }*/
 
       // Search for the flow
       for (long i = IA[Parents[current]]; i < IA[Parents[current] + 1]; i++) {
@@ -140,10 +120,6 @@ void Compute(graph<vertex>& GA, commandLine P) {
       }
       current = Parents[current];
     }
-
-    /*if (delta == UINT_E_MAX) {
-      std::cerr << "Appropriate flow delta was not found!\n";
-    }*/
 
     // Second update all flows
     current = destination;
@@ -166,7 +142,6 @@ void Compute(graph<vertex>& GA, commandLine P) {
     maxFlow += delta;
   }
 
-  //std::cout << "Max flow is " << maxFlow << "\n";
   free(Parents);
   free(A);
   free(IA);
