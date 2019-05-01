@@ -36,6 +36,7 @@ if __name__ == "__main__":
                             visited.add(dest)
         if len(nodes_visited) > max_size:
             max_source, max_size = source, len(nodes_visited)
+    print("Max source and farthest destination are " + str(max_source) + " and " + str(last_item))
     edge_list = []
     for i in range(len(adj_list)):
         for dest in adj_list[i]:
@@ -44,6 +45,8 @@ if __name__ == "__main__":
     print(len(adj_list))
     print(len(edge_list))
     G = nx.DiGraph()
+    for i in range(len(adj_list)):
+        G.add_node(i)
     for edge in edge_list:
         u, v, w = edge
         G.add_edge(u, v, capacity=w)
@@ -51,6 +54,5 @@ if __name__ == "__main__":
     start = time.time()
     R = edmonds_karp(G, max_source, last_item)
     end = time.time()
-    print("Max source and farthest destination are " + str(max_source) + " and " + str(last_item))
     print("Maximum flow value is " + str(R.graph['flow_value']))
     print(" Time taken: " + str(1000 * (end - start)) + "ms")

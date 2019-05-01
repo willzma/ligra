@@ -1,6 +1,5 @@
 '''
 Converts weighted graphs in GTgraph format to the WeightedAdjacencyGraph format of Ligra.
-Can optionally set a flag to include back edges for use by a maximum flow algorithm.
 
 Note that GTgraph creates multigraphs; this script handles duplicate edges; the latest (in-file)
 update to an edge's weight will be the one used in the final result.
